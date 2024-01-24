@@ -35,7 +35,7 @@
           Par téléphone : <a href="tel:+33666666666" class="text-dark">06.66.66.66.66</a>
         </li>
         <li>
-          <a class="btn btn-outline-dark mt-3" role="button" href="/cours01/pages/contact.php" id="contact">Formulaire de contact</a>
+          <a class="btn btn-outline-dark mt-3" role="button" href="/index.php?page=contact" id="contact">Formulaire de contact</a>
         </li>
       </ul>
     </div>

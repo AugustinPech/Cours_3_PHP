@@ -8,8 +8,8 @@
                                         container-fluid : means the container is in full width-->
       <div class="container-fluid">
         <!-- set our "brand" box with the logo of our brand -->
-        <a class="navbar-brand" href="Augustin.html">
-          <img src="/cours01/img/logoAAJA2.svg" alt="Logo AAJA">
+        <a class="navbar-brand" href="">
+          <img src="../img/logoAAJA2.svg" alt="Logo AAJA">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -17,7 +17,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/cours01/index.php?page=CV">Accueil</a>
+              <a class="nav-link active" aria-current="page" href="/index.php?page=CV">Accueil</a>
             </li>
             <li class="nav-item">
               <a class="nav-link disabled" href="../../pages/team.html">Notre équipe</a>
@@ -41,7 +41,7 @@
             </li> -->
           </ul>
           <div class="d-flex gap-2">
-            <a href="/cours01/pages/contact.php" class="btn btn-light">Contactez nous</a>
+            <a href="/index.php?page=contact" class="btn btn-light">Contactez nous</a>
             <!-- <a href="AAJA HTML-CSS/pages/intranet.html" class="btn btn-primary ml-2">Sign in</a> -->
             <a href="" class="btn btn-primary ml-2">Sign in</a>
           </div>
