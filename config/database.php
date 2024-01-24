@@ -1,10 +1,15 @@
 <?php
-$user='AugustinPech';
-$pass='25111991';
-try {
-    $pdo = new PDO('mysql:host=blog.local;dbname=TestDB-Articles',  $user, $passarray(
-        PDO::ATTR_PERSISTENT => true
-    ));
-} catch (PDOException $e) {
-    echo 'UnAble to connect to the DataBase';
-}
+include 'variables.php';
+$pdo = new PDO('mysql:host=blog.local;dbname=TestDB-Articles',  $user, $pass);
+$statement = $pdo->query("SELECT * FROM Articles");
+$row = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($row as $key => $value) {
+    $data = '';
+    foreach ($row[$key] as $key => $value) {
+        $data = $data . "[$key] - - $value </br>";
+    };
+    echo "$data </br>" ;
+};
+
+print_r($row);

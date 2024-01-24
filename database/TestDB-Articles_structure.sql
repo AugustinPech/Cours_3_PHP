@@ -4,7 +4,7 @@ CREATE TABLE `Articles` (
   `body` text NOT NULL,
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
-  `importance_level` int(10) unsigned zerofill NOT NULL,
+  `importance_level` int(10) unsigned NOT NULL DEFAULT 0,
   `Authors_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`id`,`Authors_id`),
   UNIQUE KEY `title_UNIQUE` (`title`),

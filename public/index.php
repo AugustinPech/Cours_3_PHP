@@ -1,6 +1,7 @@
 <?php
-echo 'coucou';
-include '../config/database.php';
+
+echo'coucou'.'</br>';
+include '../config/database.php'
 // $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_SPECIAL_CHARS);
 
 // $directory = 'pages/';
@@ -28,14 +29,13 @@ include '../config/database.php';
 
 // if (isset($page) && $page == $filesNames[$indexName] && $page!='404') {
 //     include $filesPath[$indexPath];
-//     // je suis parfaitement contient de la gigantesque faille de sécurité que j'ai laissé ici
-//     // il faudrait que mon dossier page/ soit clean
-//     // i.e. déplacer globalStyles.css et traitement.php...
+//     je suis parfaitement contient de la gigantesque faille de sécurité que j'ai laissé ici
 // } else {
 //     header('HTTP/1.0 404 Not Found');
 //     $metatitle = 'Erreur 404 - Not Found';
-//     include 'pages/head.php';
-//     include 'pages/header.php';
-//     include 'pages/404.html';
-//     include 'pages/footer.php';
+//     include '../ressources/views/layouts/head.php';
+//     include '../ressources/views/layouts/header.php';
+//     include '../ressources/views/errors/404.php';
+//     include '../ressources/views/layouts/footer.php';
 // }
+?>
