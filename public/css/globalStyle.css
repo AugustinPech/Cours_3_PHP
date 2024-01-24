@@ -1,0 +1,161 @@
+:root {
+    --primary: #0D6EFD;
+    --primaryAlpha1: #0d6dfdce;
+    --primaryAlpha2: #0d6dfd9d;
+    --primaryAlpha3: #0d6dfd69;
+    --secondary:  #7BB0FF;
+    --tonic: #DBFF00;
+
+}
+
+body{
+    display: flex;
+    height: 100vh;
+}
+
+#header {
+    background-color: var(--primary);
+}
+#footer {
+    background-color: var(--primary);
+}
+
+#contact {
+    background-color: var(--tonic);
+}
+
+.tonic {
+    background-color: var(--tonic);
+}
+
+.tier1 {
+    height: 33vh;
+}
+.tier2{
+    height: 61vh;
+    background-color: white;
+    background-image:url(img/RiverTop.svg);
+    background-position: center;
+    background-size: cover;
+}
+
+/* à remplacer en bootstrap par class="container d-flex flex-row justify-content-evenly align-items-center" */
+div.bandeauTeam {  
+    display: flex;
+    margin-left:10vw;
+    margin-right:10vw;
+    justify-content: space-between;
+    align-items:flex-end;
+    >div img {width: 40vw ; max-width: 200px;}
+}
+
+tbody th:not(:first-child) {
+    font-weight: normal;
+}
+
+.navbar-nav .nav-link.active {
+    color: white;
+}
+
+.nav-link.dropdown-toggle {
+    color: white;
+}
+
+/* animation */
+@keyframes move {
+    100% {
+        transform: translate3d(0, 0, 1px) rotate(360deg);
+    }
+}
+.containerBandeau {
+    margin-bottom:5px;
+    position: relative;
+    width:40vw;
+}
+.zone {
+    overflow: hidden;
+}
+.zone span {
+    width: 20%;
+    height: 20%;
+    border-radius: 20%;
+    position: absolute;
+    animation: move;
+    animation-duration: 25;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+.zone span:nth-child(1) {
+    color: #dbff00;
+    top: 70%;
+    left: 69%;
+    animation-duration: 22s;
+    animation-delay: -38s;
+    transform-origin: -19% -12%;
+}
+.zone span:nth-child(2) {
+    color: #dbff00;
+    top: 19%;
+    left: 25%;
+    animation-duration: 31s;
+    animation-delay: -13s;
+    transform-origin: 6% -15%;
+}
+.zone span:nth-child(3) {
+    color: #dbff00;
+    top: 61%;
+    left: 32%;
+    animation-duration: 23s;
+    animation-delay: -33s;
+    transform-origin: -14% -9%;
+}
+
+#video{
+    aspect-ratio: 16/9;
+    width:100%;
+}
+
+.sur_image {
+    background-color:rgba(255, 255, 255, 0.596);
+    border: 1px solid blue ;
+    margin:1%;
+    padding:5px 5px 5px 5px
+}
+
+main.calc {
+    background-image:url(https://elfa.com/-/media/qbank/marketing-image---elfa-story/elfa_storage_solution_garage_elise_after.ashx?h=780&iar=0&w=1280);
+}
+
+*======================
+    404 page
+=======================*/
+
+
+.page_404{ padding:40px 0; background:#fff; font-family: 'Arvo', serif;
+}
+
+.page_404  img{ width:100%;}
+
+.four_zero_four_bg{
+ 
+ background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+    height: 400px;
+    background-position: center;
+ }
+ 
+ 
+ .four_zero_four_bg h1{
+ font-size:80px;
+ }
+ 
+  .four_zero_four_bg h3{
+			 font-size:80px;
+			 }
+			 
+			 .link_404{			 
+	color: #fff!important;
+    padding: 10px 20px;
+    background: #39ac31;
+    margin: 20px 0;
+    display: inline-block;}
+	.contant_box_404{ margin-top:-50px;}

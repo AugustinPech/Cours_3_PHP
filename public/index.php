@@ -1,13 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<h1>Bienvenue sur le blog</h1> 
-<p>hehehe</p>
-</body>
-</html>
+<?php
 
+$page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_SPECIAL_CHARS);
+
+$directory = 'pages/';
+$test = dirname($_SERVER['PHP_SELF']);
+$filesPath = glob($directory . '*');
+
+$filesNames = array_map(
+    function ($val) {
+        return explode(".", $val)[0];
+    },
+    scandir('pages', SCANDIR_SORT_NONE)
+);
+
+$indexName = array_search($page, $filesNames);
+$indexPath = array_search(
+    $page,
+    array_map(
+        function ($val) {
+            return explode(".", explode('pages/', $val)[1])[0];
+        },
+        $filesPath
+    )
+);
+
+if (isset($page) && $page == $filesNames[$indexName] && $page!='404') {
+    include $filesPath[$indexPath];
+    // je suis parfaitement contient de la gigantesque faille de sécurité que j'ai laissé ici
+    // il faudrait que mon dossier page/ soit clean
+    // i.e. déplacer globalStyles.css et traitement.php...
+} else {
+    header('HTTP/1.0 404 Not Found');
+    $metatitle = 'Erreur 404 - Not Found';
+    include 'pages/header.php';
+    include 'pages/404.html';
+    include 'pages/footer.php';
+}
