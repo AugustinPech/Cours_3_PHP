@@ -1,7 +1,14 @@
 <?php
 
 // echo'coucou'.'</br>';
-// include '../config/database.php';
+include '../config/database.php';
+include '../app/persistances/blogPostData.php';
+
+
+
+
+
+
 
 $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_SPECIAL_CHARS);
 $action = $action ?? 'Accueil';

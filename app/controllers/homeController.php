@@ -4,11 +4,16 @@ include '../ressources/views/layouts/header.php';
 ?>
 <h1>BOUH</h1>
 <?php
-include '../app/persistances/blogPostData.php';
 
-$test = 21 ;
-$result=lastBlogPosts($test,1);
-var_dump($result);
+$statement = $pdo->query(lastBlogPosts());
+$row = $statement->fetchAll(PDO::FETCH_ASSOC);
+foreach ($row as $key => $value) {
+    $data = '';
+    foreach ($row[$key] as $key => $value) {
+        $data = $data . "[$key] - - $value </br>";
+    };
+    echo "$data </br>" ;
+};
 ?>
 
 <?php
