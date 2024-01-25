@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     A[start] --> B[get all posts from database]
     B --> C{no blog post ?}
@@ -6,7 +7,8 @@ graph TD
     E --> F{more blogpost?}
     F -- Yes --> E
     F -- No --> G[End]
-
+```
+```mermaid
 sequenceDiagram
     User->>index.php: ?action=
     index.php->>homeController.php: include
@@ -20,3 +22,4 @@ sequenceDiagram
     blogPstData.php-->>homeController.php: blogPosts
     homeController.php->>home.tpl.php: blogPosts
     home.tpl.php -->>User: display blogPosts
+```
