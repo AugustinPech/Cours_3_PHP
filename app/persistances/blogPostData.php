@@ -11,3 +11,21 @@ function lastBlogPosts($myPdo, $numberOfArticles) // $nb est le nombre d'article
     $outputListOfLastArticles = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $outputListOfLastArticles;
 };
+
+function oneArticle($myPdo, $idArticle) {
+    $query="Select  Articles.id, title , body , startDate , endDate, pseudo from Articles
+    inner join Authors on Authors.id = Articles.Authors_id 
+    WHERE Articles.id=$idArticle";
+
+    $statement = $myPdo->query($query);
+    $outputArticle = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $outputArticle;
+};
+
+function allCommentsOfOneArticle($myPdo, $idArticle) {
+    $query="select body, date, Authors_id, Articles_id , Authors.pseudo FROM comments inner join Authors on Authors.id = comments.Authors_id  WHERE Articles.id = $idArticle";
+
+    $statement = $myPdo->query($query);
+    $outputComments = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $outputComments;
+};
