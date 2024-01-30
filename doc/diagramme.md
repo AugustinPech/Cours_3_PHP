@@ -42,3 +42,19 @@ sequenceDiagram
     blogPostController.php->>blogPost.tpl.php: oneBlogPost
     blogPost.tpl.php -->>User: display oneBlogPost
 ```
+## de la création d'un article
+```mermaid
+sequenceDiagram
+    User->>index.php: ?action=blogPostCreate
+    index.php->>blogPostCreateController.php: include
+    blogPostCreateController.php->>blogPostData.php: blogPostCreate()
+    blogPostData.php->>PDO: prepare()
+    PDO-->>blogPostData.php: PDOStatement
+    blogPostData.php->>PDOStatement: execute()
+    PDOStatement-->>blogPostData.php: isSuccess
+    blogPostData.php->>PDOStatement: fetchAll()
+    PDOStatement-->>blogPostData.php: oneNewBlogPost
+    blogPostData.php-->>blogPostCreateController.php: oneNewBlogPost
+    blogPostCreateController.php->>blogPostCreate.tpl.php: oneNewBlogPost
+    blogPostCreate.tpl.php -->>User: display oneNewBlogPost
+```

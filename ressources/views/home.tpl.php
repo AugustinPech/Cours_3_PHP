@@ -4,16 +4,18 @@ $metadescription = 'Home - Affiche la liste des 10 derniers articles';
 include '../ressources/views/layouts/head.tpl.php';
 include '../ressources/views/layouts/header.tpl.php';
 ?>
+
+
 <div class="d-flex cdiv-12 flex-row flex-wrap justify-content-around ">
     <?php if (count($lastArticles) > 0) : foreach ($lastArticles as $article) : ?>
-        
+
             <div class="d-flex flex-column col-4 m-1">
-                <a href="<?php echo "/index.php?action=blogPost&id=".$article['id']; ?>" class="link-dark link-underline-opacity-0">
+                <a href="<?php echo "/index.php?action=blogPost&id=" . $article['id']; ?>" class="link-dark link-underline-opacity-0">
                     <b class="border-bottom">
                         <?php echo $article['title'] ?>
                     </b>
                 </a>
-                <blockquote  cite="">
+                <blockquote cite="">
                     <p class="mb-0">
                         <?php echo $article['body'] ?>
                     </p>
@@ -22,7 +24,8 @@ include '../ressources/views/layouts/header.tpl.php';
                     </footer>
                 </blockquote>
             </div>
-    <?php endforeach; else : ?>
+        <?php endforeach;
+    else : ?>
         <div>
             Aucun articles pour le moment.
         </div>
@@ -30,8 +33,10 @@ include '../ressources/views/layouts/header.tpl.php';
 </div>
 <div class="d-flex col-12 flex-row flex-wrap justify-content-around ">
     <form method="post">
-        <input type="submit" name="moreArticles" class="button" value="Afficher Plus d'Articles" />
+        <input type="submit" name="moreArticles" class="btn btn-dark" value="Afficher Plus d`Articles" />
+        <a href="<?php echo "/index.php?action=blogPostCreate"; ?>" class="btn btn-dark">Submit new Article</a>
     </form>
+    
 </div>
 <?php
 include '../ressources/views/layouts/footer.tpl.php';

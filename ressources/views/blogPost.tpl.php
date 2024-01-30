@@ -1,5 +1,5 @@
 <?php
-$metatitle = ' Article Page';
+$metatitle = "Article n°".$article[0]['id']." - ".$article[0]['title'];
 $metadescription = 'Affiche 1 article et ses commentaires';
 include '../ressources/views/layouts/head.tpl.php';
 include '../ressources/views/layouts/header.tpl.php';

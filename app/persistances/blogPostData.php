@@ -33,3 +33,28 @@ function allCommentsOfOneArticle($myPdo, $idArticle) {
     $outputComments = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $outputComments;
 };
+
+function getAuthorsId($myPdo, $AuthorsPseudo) {
+    $query="Select Authors.id from Authors where Authors.pseudo = '$AuthorsPseudo' limit 1";
+    $statement = $myPdo->query($query);
+    $outputId = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $outputId;
+}
+function blogPostCreate($myPdo, $input) {
+    $query="insert INTO Articles ( `title`, `body`, `longText`, `startDate`, `endDate`, `Authors_id`, `importance_level` ) VALUES
+    ( ? , ? , ? , ? , ? , ? , 0);";
+
+    $input['id']= getAuthorsId($myPdo, $input['pseudo'])[0]['id'];
+    $statement = $myPdo->prepare($query);
+
+    $statement-> execute(
+                    array(
+                        $input['title'] ,
+                        $input['body'] ,
+                        $input['longText'] ,
+                        $input['startDate'] ,
+                        $input['endDate'] ,
+                        $input['id']
+                    )
+                );
+};
