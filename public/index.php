@@ -8,6 +8,7 @@ $routes = [
     'Accueil'=> '../app/controllers/homeController.php',
     'blogPost'=> '../app/controllers/blogPostController.php',
     'blogPostCreate'=>'../app/controllers/blogPostCreateContoller.php',
+    'blogPostModify'=>'../app/controllers/blogPostModifyContoller.php',
     '404' => '../ressources/views/errors/404.php',
 ];
 

@@ -6,14 +6,15 @@ function lastBlogPosts($myPdo, $numberOfArticles) // $nb est le nombre d'article
     WHERE `startDate` < CURRENT_TIMESTAMP AND `endDate` > CURRENT_TIMESTAMP
     ORDER BY `importance_level` asc , `startDate` desc
     LIMIT $numberOfArticles";
-    
+
     $statement = $myPdo->query($query);
     $outputListOfLastArticles = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $outputListOfLastArticles;
 };
 
-function oneArticle($myPdo, $idArticle) {
-    $query="Select  Articles.id, title , body , Articles.longText, startDate , endDate, pseudo from Articles
+function oneArticle($myPdo, $idArticle)
+{
+    $query = "Select  Articles.id, title , body , Articles.longText, startDate , endDate, pseudo from Articles
     inner join Authors on Authors.id = Articles.Authors_id 
     WHERE Articles.id=$idArticle";
 
@@ -22,8 +23,9 @@ function oneArticle($myPdo, $idArticle) {
     return $outputArticle;
 };
 
-function allCommentsOfOneArticle($myPdo, $idArticle) {
-    $query="select body, date, Authors_id, Articles_id , Authors.pseudo
+function allCommentsOfOneArticle($myPdo, $idArticle)
+{
+    $query = "select body, date, Authors_id, Articles_id , Authors.pseudo
     FROM comments
     inner join Authors on Authors.id = comments.Authors_id 
     WHERE Articles_id = $idArticle
@@ -34,27 +36,43 @@ function allCommentsOfOneArticle($myPdo, $idArticle) {
     return $outputComments;
 };
 
-function getAuthorsId($myPdo, $AuthorsPseudo) {
-    $query="Select Authors.id from Authors where Authors.pseudo = '$AuthorsPseudo' limit 1";
-    $statement = $myPdo->query($query);
-    $outputId = $statement->fetchAll(PDO::FETCH_ASSOC);
-    return $outputId;
-}
 function blogPostCreate($myPdo, $input) {
-    $query="insert INTO Articles ( `title`, `body`, `longText`, `startDate`, `endDate`, `Authors_id`, `importance_level` ) VALUES
+
+    $query = "insert INTO Articles ( `title`, `body`, `longText`, `startDate`, `endDate`, `Authors_id`, `importance_level` ) VALUES
     ( ? , ? , ? , ? , ? , ? , 0);";
 
-    $input['id']= getAuthorsId($myPdo, $input['pseudo'])[0]['id'];
     $statement = $myPdo->prepare($query);
 
-    $statement-> execute(
-                    array(
-                        $input['title'] ,
-                        $input['body'] ,
-                        $input['longText'] ,
-                        $input['startDate'] ,
-                        $input['endDate'] ,
-                        $input['id']
-                    )
-                );
+    $statement->execute(
+        array(
+            $input['title'],
+            $input['body'],
+            $input['longText'],
+            $input['startDate'],
+            $input['endDate'],
+            $input['id']
+        )
+    );
 };
+
+function allAuthors($myPdo) {
+    $query="select id, pseudo from Authors where pseudo!='anonyme'";
+    $statement = $myPdo->query($query);
+    $allAuthors = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $allAuthors;
+}
+
+function blogPostUpdate($myPdo, $article_id, $input)
+{
+    $query = "Update Articles set";
+        $query = $query . " title= '" . $input['title'] . "',";
+        $query = $query . " body= '" . $input['body'] . "',";
+        $query = $query . " `longText`= '" . $input['longText'] . "',";
+        $query = $query . " startDate= '" . $input['startDate'] . "',";
+        $query = $query . " endDate= '" . $input['endDate']."'";
+    $query = $query . " where Articles.id = $article_id";
+
+    $statement = $myPdo->prepare($query);
+
+    $statement->execute();
+}

@@ -23,6 +23,8 @@ include '../ressources/views/layouts/header.tpl.php';
                     <em>By <a href="" class=""><u><?php echo $article[0]['pseudo'] ?></u></a> </em>
                 </footer>
             </blockquote>
+            
+            <a href="<?php echo "/index.php?action=blogPostModify&id=" . $article[0]['id']; ?>" class="ms-4 col-2 btn btn-dark">Modify this Article</a>
         </div>
     <?php else : ?>
         <div>

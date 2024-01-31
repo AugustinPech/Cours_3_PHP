@@ -51,10 +51,22 @@ sequenceDiagram
     blogPostData.php->>PDO: prepare()
     PDO-->>blogPostData.php: PDOStatement
     blogPostData.php->>PDOStatement: execute()
-    PDOStatement-->>blogPostData.php: isSuccess
-    blogPostData.php->>PDOStatement: fetchAll()
-    PDOStatement-->>blogPostData.php: oneNewBlogPost
-    blogPostData.php-->>blogPostCreateController.php: oneNewBlogPost
-    blogPostCreateController.php->>blogPostCreate.tpl.php: oneNewBlogPost
-    blogPostCreate.tpl.php -->>User: display oneNewBlogPost
+    PDOStatement-->>MariaDB: oneNewBlogPost
+    blogPostData.php-->>blogPostCreateController.php: message oneNewBlogPost
+    blogPostCreateController.php->>blogPostCreate.tpl.php: message oneNewBlogPost
+    blogPostCreate.tpl.php -->>User: message oneNewBlogPost
+```
+## de la modification d'un article
+```mermaid
+sequenceDiagram
+    User->>index.php: ?action=blogPostCreate
+    index.php->>blogPostModifyController.php: include
+    blogPostModifyController.php->>blogPostData.php: blogPostModify()
+    blogPostData.php->>PDO: prepare()
+    PDO-->>blogPostData.php: PDOStatement
+    blogPostData.php->>PDOStatement: execute()
+    PDOStatement-->>MariaDB: updateBlogPost
+    blogPostData.php-->>blogPostModifyController.php: message BlogPostUpdated
+    blogPostModifyController.php->>blogPostModify.tpl.php: message BlogPostUpdated
+    blogPostModify.tpl.php -->>User: message BlogPostUpdated
 ```

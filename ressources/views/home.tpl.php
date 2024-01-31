@@ -35,7 +35,8 @@ include '../ressources/views/layouts/header.tpl.php';
     <form method="post">
         <input type="submit" name="moreArticles" class="btn btn-dark" value="Afficher Plus d`Articles" />
         <a href="<?php echo "/index.php?action=blogPostCreate"; ?>" class="btn btn-dark">Submit new Article</a>
-    </form>
+
+</form>
     
 </div>
 <?php
