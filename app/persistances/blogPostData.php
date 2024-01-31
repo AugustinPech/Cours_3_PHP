@@ -82,7 +82,7 @@ function blogPostUpdate($myPdo, $article_id, $input)
 
 function blogPostDelete($myPdo, $blogPostID) {
     $query ="delete from Articles_has_categories where Articles_id = $blogPostID;
-    delete from comments where Articles_id = $blogPostID;
+    delete from coments where Articles_id = $blogPostID;
     delete from Articles where Articles.id = $blogPostID";
 
     $statement = $myPdo->prepare($query);

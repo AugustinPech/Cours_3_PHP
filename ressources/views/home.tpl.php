@@ -31,14 +31,18 @@ include '../ressources/views/layouts/header.tpl.php';
         </div>
     <?php endif; ?>
 </div>
-<div class="d-flex col-12 flex-row flex-wrap justify-content-around ">
-    <form method="post">
-        <input type="submit" name="moreOrLessArticles" class="btn btn-dark" value="Afficher Plus d`Articles" />
-        <input type="submit" name="moreOrLessArticles" class="btn btn-dark" value="Afficher Moins d`Articles" />
-        <a href="<?php echo "/index.php?action=blogPostCreate"; ?>" class="btn btn-dark">Submit new Article</a>
+<div class="d-flex col-12 flex-column flex-wrap justify-content-around align-items-center">
+    <p class="text-danger"><?php if (filter_input(INPUT_GET, 'delete', FILTER_SANITIZE_SPECIAL_CHARS)==1) {
+                                echo "Article n°" . filter_input(INPUT_GET, 'id', FILTER_SANITIZE_SPECIAL_CHARS) . " supprimé";
+                            } elseif (filter_input(INPUT_GET, 'delete', FILTER_SANITIZE_SPECIAL_CHARS)==0) {echo 'fail';} ?></p>
+    <div class="d-flex col-12 flex-row flex-wrap justify-content-around ">
+        <form method="post">
+            <input type="submit" name="moreOrLessArticles" class="btn btn-dark" value="Afficher Plus d`Articles" />
+            <input type="submit" name="moreOrLessArticles" class="btn btn-dark" value="Afficher Moins d`Articles" />
+            <a href="<?php echo "/index.php?action=blogPostCreate"; ?>" class="btn btn-dark">Submit new Article</a>
 
-</form>
-    
+        </form>
+    </div>
 </div>
 <?php
 include '../ressources/views/layouts/footer.tpl.php';
