@@ -31,7 +31,7 @@ $currentDate = date("Y-m-d");
                 <div><input type="date" name="startDate" id="startDate" value="<?php echo "$currentDate"; ?>" min="<?php echo "$currentDate"; ?>"></div>
             </div>
             <div><label for="endDate">Date de retrait souhaitée</label>
-                <div><input type="date" name="endDate" id="endDate" value="<?php echo $currentDate; ?>"></div>
+                <div><input type="date" name="endDate" id="endDate" value="<?php echo date("Y-m-d", strtotime($currentDate. ' + 1 month')); ?>" max="<?php echo date("Y-m-d", strtotime($currentDate. ' + 1 years')); ?>">></div>
             </div>
         </div><br>
         <label for="body">Résumé de votre article :</label>

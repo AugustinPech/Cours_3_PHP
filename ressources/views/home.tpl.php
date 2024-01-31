@@ -27,13 +27,14 @@ include '../ressources/views/layouts/header.tpl.php';
         <?php endforeach;
     else : ?>
         <div>
-            Aucun articles pour le moment.
+            Aucun articles à afficher.
         </div>
     <?php endif; ?>
 </div>
 <div class="d-flex col-12 flex-row flex-wrap justify-content-around ">
     <form method="post">
-        <input type="submit" name="moreArticles" class="btn btn-dark" value="Afficher Plus d`Articles" />
+        <input type="submit" name="moreOrLessArticles" class="btn btn-dark" value="Afficher Plus d`Articles" />
+        <input type="submit" name="moreOrLessArticles" class="btn btn-dark" value="Afficher Moins d`Articles" />
         <a href="<?php echo "/index.php?action=blogPostCreate"; ?>" class="btn btn-dark">Submit new Article</a>
 
 </form>

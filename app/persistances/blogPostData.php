@@ -3,7 +3,7 @@ function lastBlogPosts($myPdo, $numberOfArticles) // $nb est le nombre d'article
 {
     $query = "Select  Articles.id, title , body ,  Articles.longText, startDate , endDate, pseudo from Articles
     inner join Authors on Authors.id = Articles.Authors_id 
-    WHERE `startDate` < CURRENT_TIMESTAMP AND `endDate` > CURRENT_TIMESTAMP
+    WHERE `startDate` <= CURRENT_TIMESTAMP AND `endDate` > CURRENT_TIMESTAMP
     ORDER BY `importance_level` asc , `startDate` desc
     LIMIT $numberOfArticles";
 
@@ -64,15 +64,27 @@ function allAuthors($myPdo) {
 
 function blogPostUpdate($myPdo, $article_id, $input)
 {
-    $query = "Update Articles set";
-        $query = $query . " title= '" . $input['title'] . "',";
-        $query = $query . " body= '" . $input['body'] . "',";
-        $query = $query . " `longText`= '" . $input['longText'] . "',";
-        $query = $query . " startDate= '" . $input['startDate'] . "',";
-        $query = $query . " endDate= '" . $input['endDate']."'";
-    $query = $query . " where Articles.id = $article_id";
+    $query = "Update Articles set title= ?, body= ?, `longText`= ?, startDate= ?, endDate= ? where Articles.id = ?";
 
     $statement = $myPdo->prepare($query);
 
+    $statement->execute(
+        array(
+            $input['title'],
+            $input['body'],
+            $input['longText'],
+            $input['startDate'],
+            $input['endDate'],
+            $article_id
+        )
+    );
+}
+
+function blogPostDelete($myPdo, $blogPostID) {
+    $query ="delete from Articles_has_categories where Articles_id = $blogPostID;
+    delete from comments where Articles_id = $blogPostID;
+    delete from Articles where Articles.id = $blogPostID";
+
+    $statement = $myPdo->prepare($query);
     $statement->execute();
 }

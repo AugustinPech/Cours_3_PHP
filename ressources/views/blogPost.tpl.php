@@ -1,5 +1,5 @@
 <?php
-$metatitle = "Article n°".$article[0]['id']." - ".$article[0]['title'];
+$metatitle = "Article n°" . $article[0]['id'] . " - " . $article[0]['title'];
 $metadescription = 'Affiche 1 article et ses commentaires';
 include '../ressources/views/layouts/head.tpl.php';
 include '../ressources/views/layouts/header.tpl.php';
@@ -23,8 +23,10 @@ include '../ressources/views/layouts/header.tpl.php';
                     <em>By <a href="" class=""><u><?php echo $article[0]['pseudo'] ?></u></a> </em>
                 </footer>
             </blockquote>
-            
-            <a href="<?php echo "/index.php?action=blogPostModify&id=" . $article[0]['id']; ?>" class="ms-4 col-2 btn btn-dark">Modify this Article</a>
+            <div class="d-flex flex-row justify-content-start">
+                <a href="<?php echo "/index.php?action=blogPostModify&id=" . $article[0]['id']; ?>" class="ms-4 col-2 btn btn-dark">Modify this Article</a>
+                <a href="<?php echo "/index.php?action=blogPostDelete&id=" . $article[0]['id']; ?>" class="ms-4 col-2 btn btn-dark">Delete this Article</a>
+            </div>
         </div>
     <?php else : ?>
         <div>

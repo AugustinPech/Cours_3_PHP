@@ -59,7 +59,7 @@ sequenceDiagram
 ## de la modification d'un article
 ```mermaid
 sequenceDiagram
-    User->>index.php: ?action=blogPostCreate
+    User->>index.php: ?action=blogPostModify
     index.php->>blogPostModifyController.php: include
     blogPostModifyController.php->>blogPostData.php: blogPostModify()
     blogPostData.php->>PDO: prepare()
@@ -69,4 +69,17 @@ sequenceDiagram
     blogPostData.php-->>blogPostModifyController.php: message BlogPostUpdated
     blogPostModifyController.php->>blogPostModify.tpl.php: message BlogPostUpdated
     blogPostModify.tpl.php -->>User: message BlogPostUpdated
+```
+## de la suppression d'un article
+```mermaid
+sequenceDiagram
+    User->>index.php: ?action=blogPostDelete
+    index.php->>blogPostDeleteController.php: include
+    blogPostDeleteController.php->>blogPostData.php: blogPostDelete()
+    blogPostData.php->>PDO: prepare()
+    PDO-->>blogPostData.php: PDOStatement
+    blogPostData.php->>PDOStatement: execute()
+    PDOStatement-->>MariaDB: updateBlogPost
+    blogPostData.php-->>blogPostDeleteController.php: message BlogPostUpdated
+    blogPostDeleteController.php->>User: message BlogPostUpdated
 ```
